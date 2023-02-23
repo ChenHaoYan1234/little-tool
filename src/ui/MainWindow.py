@@ -10,18 +10,19 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from util import spyder, video
+from ui import SpyderDialog
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
     def __init__(self) -> None:
         super().__init__(None, QtCore.Qt.WindowType.Window)
-        self.setupUi(self)
+        self.setupUi()
 
-    def setupUi(self, MainWindow: QtWidgets.QMainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self):
+        self.setObjectName("MainWindow")
+        self.resize(800, 600)
+        self.setFixedSize(self.width(), self.height())
+        self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
         self.Spyder = QtWidgets.QPushButton(self.centralwidget)
         self.Spyder.setGeometry(QtCore.QRect(200, 330, 200, 100))
@@ -36,10 +37,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.Title.setFont(font)
         self.Title.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.Title.setObjectName("Title")
-        MainWindow.setCentralWidget(self.centralwidget)
+        self.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
 
         self.init()
 
@@ -48,14 +49,15 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.Video.clicked.connect(self.video_)
 
     def spyder_(self):
-        print("sb")
+        spyder = SpyderDialog.Ui_Spyder(self)
+        spyder.show()
 
     def video_(self):
         pass
 
-    def retranslateUi(self, MainWindow: QtWidgets.QMainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "智障小工具"))
+        self.setWindowTitle(_translate("MainWindow", "智障小工具"))
         self.Spyder.setText(_translate("MainWindow", "爬取图片"))
         self.Video.setText(_translate("MainWindow", "视频抽帧"))
         self.Title.setText(_translate("MainWindow", "智障小工具"))

@@ -3,7 +3,7 @@ import typing
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from MainWindow import Ui_MainWindow
+from ui.MainWindow import Ui_MainWindow
 
 
 def main() -> typing.NoReturn:
