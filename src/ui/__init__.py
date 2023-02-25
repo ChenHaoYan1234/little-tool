@@ -1,1 +1,1 @@
-from . import *
+from .MainWindow import Ui_MainWindow

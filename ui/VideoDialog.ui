@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VideoDialog</class>
+ <widget class="QDialog" name="VideoDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>160</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>视频抽帧</string>
+  </property>
+  <widget class="QLabel" name="VideoLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>40</y>
+     <width>35</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>视频：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="SaveDirLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>60</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>输出目录：</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Cancel">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>130</y>
+     <width>75</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Send">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>130</y>
+     <width>75</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>确定</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Video">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>40</y>
+     <width>260</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="SaveDir">
+   <property name="geometry">
+    <rect>
+     <x>75</x>
+     <y>90</y>
+     <width>235</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="VideoButton">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>40</y>
+     <width>75</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>浏览</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SaveDirButton">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>90</y>
+     <width>75</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>浏览</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

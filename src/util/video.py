@@ -1,7 +1,14 @@
+import os
+
 import cv2
+
 
 def video(videoName: str, saveDir: str):
     try:
+        if os.path.isfile(videoName):
+            return
+        if os.path.isdir(saveDir):
+            os.mkdir(os.path.abspath(saveDir))
         # 读取视频文件
         cap = cv2.VideoCapture(videoName)
 
@@ -16,11 +23,10 @@ def video(videoName: str, saveDir: str):
                 break
 
             # 保存为图像文件
-            filename = f"{saveDir}\\frame_{i}.jpg"
-            cv2.imwrite(filename, frame)
+            filename = f"{saveDir}/frame_{i}.jpg"
+            cv2.imencode(".jpg", frame)[1].tofile(filename)
 
         # 释放资源
         cap.release()
-        return 0
     except:
-        return -1
+        pass

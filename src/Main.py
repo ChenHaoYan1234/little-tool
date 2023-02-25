@@ -1,9 +1,9 @@
 import sys
 import typing
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtWidgets
 
-from ui.MainWindow import Ui_MainWindow
+from ui import Ui_MainWindow
 
 
 def main() -> typing.NoReturn:

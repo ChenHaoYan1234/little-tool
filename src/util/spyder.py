@@ -1,12 +1,14 @@
+import io
 import os
 import re
 from urllib import error
 
 import requests
+from PIL import Image
+from requests import structures
 
 def Find(url, A):
     List = []
-    print('正在检测图片总数，请稍等.....')
     t = 0
     i = 1
     s = 0
@@ -28,13 +30,13 @@ def Find(url, A):
             else:
                 List.append(pic_url)
                 t = t + 60
-    return s,List
+    return s, List
 
 
-def dowmloadPicture(html: str, keyword: str, numPicture: int,saveDir:str):
+def downloadPicture(html: str, keyword: str, numPicture: int, saveDir: str):
     num = 0
-    # t =0
-    pic_url = re.findall('"objURL":"(.*?)",', html, re.S)  # 先利用正则表达式找到图片url
+    pic_url: list[str] = re.findall(
+        '"objURL":"(.*?)",', html, re.S)  # 先利用正则表达式找到图片url
     for each in pic_url:
         try:
             if each is not None:
@@ -44,16 +46,28 @@ def dowmloadPicture(html: str, keyword: str, numPicture: int,saveDir:str):
         except:
             continue
         else:
-            string = f"{saveDir}\\{keyword}_{num}.jpg"
+
+            img_io = io.BytesIO(pic.content)
+            try:
+                img = Image.open(img_io)
+            except:
+                continue
+            img_format = img.format
+            if (img_format is None):
+                continue
+            num += 1
+            string = f"{saveDir}\\{keyword}_{num}.{img_format.lower()}"
             fp = open(string, 'wb')
             fp.write(pic.content)
             fp.close()
-            num += 1
         if num >= numPicture:
             return
 
 
-def spyder(keyword: str,saveDir:str, numPicture: int):
+def spyder(keyword: str, saveDir: str, numPicture: int):
+    saveDir = os.path.abspath(saveDir)
+    if (not os.path.isdir(saveDir)):
+        os.mkdir(saveDir)
 
     ##############################
     # 这里加了点
@@ -65,15 +79,12 @@ def spyder(keyword: str,saveDir:str, numPicture: int):
     }
 
     A = requests.Session()
-    A.headers = headers
-
+    A.headers = structures.CaseInsensitiveDict(headers)
     url = 'https://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&word=' + keyword + '&pn='
 
     # 这里搞了下
-    count,List = Find(url, A)
-    if(os.path.isdir(saveDir)):
-        os.mkdir(saveDir)
-    if(numPicture > count):
+    count = Find(url, A)[0]
+    if (numPicture > count):
         numPicture = count
     t = 0
     tmp = url
@@ -84,8 +95,7 @@ def spyder(keyword: str,saveDir:str, numPicture: int):
             # 这里搞了下
             result = A.get(url, timeout=10, allow_redirects=False)
         except error.HTTPError as e:
-            print('网络错误，请调整网络后重试')
             t = t + 60
         else:
-            dowmloadPicture(result.text, keyword,numPicture,saveDir)
+            downloadPicture(result.text, keyword, numPicture, saveDir)
             t = t + 60
