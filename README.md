@@ -7,11 +7,10 @@
 软件架构说明
 
 
-#### 安装教程
+#### 构建
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.使用 pip install -r .\pip-reqirements.txt 安装所需模块
+2.使用 make build 构建可执行文件
 
 #### 使用说明
 
