@@ -4,6 +4,8 @@ from multiprocessing import Queue
 
 
 class Task(typing.TypedDict):
+    """类型检查用任务字典类\n
+    规定task, args, kwargs, callback的类型"""
     task: typing.Callable
     args: typing.Tuple | None
     kwargs: typing.Dict[str, typing.Any] | None
@@ -11,6 +13,7 @@ class Task(typing.TypedDict):
 
 
 def worker(taskQueue: Queue):
+    """任务执行器"""
     while True:
         tk: Task | None = taskQueue.get()
         if not tk is None:

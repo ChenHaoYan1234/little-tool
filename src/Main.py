@@ -16,7 +16,7 @@ def main() -> typing.NoReturn:
     exit_ = app.exec_()
     TaskQueue.put(None)
     while TaskWorkerProcess.is_alive():
-        pass
+        TaskWorkerProcess.join()
     TaskWorkerProcess.close()
     sys.exit(exit_)
 

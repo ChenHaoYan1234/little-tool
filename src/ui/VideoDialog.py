@@ -2,7 +2,7 @@ import os
 import typing
 import time
 import threading
-from util import TaskWorkerProcess, TaskQueue, Task
+from util import TaskQueue, Task
 
 from PyQt5 import QtCore, QtWidgets
 
