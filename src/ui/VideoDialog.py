@@ -1,5 +1,8 @@
 import os
+import typing
+import time
 import threading
+from util import TaskWorkerProcess, TaskQueue, Task
 
 from PyQt5 import QtCore, QtWidgets
 
@@ -58,11 +61,14 @@ class Ui_VideoDialog(QtWidgets.QDialog):
         if self.SaveDir.text() == "":
             noNone(self, "保存目录")
             return
-        video_thread = threading.Thread(target=video, args=(
-            self.Video.text(), self.SaveDir.text()))
-        video_thread.start()
-        while video_thread.is_alive():
-            video_thread.join()
+        task: Task = {
+            "task": video,
+            "args": (self.Video.text(),self.SaveDir.text()),
+            "kwargs": None,
+            "callback": None
+        }
+        TaskQueue.put(task)
+        return
 
     def closeWarper(self):
         self.close()

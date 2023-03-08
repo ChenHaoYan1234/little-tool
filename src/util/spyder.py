@@ -32,7 +32,6 @@ def Find(url, A):
                 t = t + 60
     return s, List
 
-
 def downloadPicture(html: str, keyword: str, numPicture: int, saveDir: str):
     num = 0
     pic_url: list[str] = re.findall(
@@ -69,8 +68,6 @@ def spyder(keyword: str, saveDir: str, numPicture: int):
     if (not os.path.isdir(saveDir)):
         os.mkdir(saveDir)
 
-    ##############################
-    # 这里加了点
     headers = {
         'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
         'Connection': 'keep-alive',
@@ -82,7 +79,6 @@ def spyder(keyword: str, saveDir: str, numPicture: int):
     A.headers = structures.CaseInsensitiveDict(headers)
     url = 'https://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&word=' + keyword + '&pn='
 
-    # 这里搞了下
     count = Find(url, A)[0]
     if (numPicture > count):
         numPicture = count
@@ -92,7 +88,6 @@ def spyder(keyword: str, saveDir: str, numPicture: int):
         try:
             url = tmp + str(t)
 
-            # 这里搞了下
             result = A.get(url, timeout=10, allow_redirects=False)
         except error.HTTPError as e:
             t = t + 60

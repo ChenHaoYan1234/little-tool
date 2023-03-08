@@ -3,11 +3,11 @@ import os
 import cv2
 
 
-def video(videoName: str, saveDir: str):
+def video(videoName: str, saveDir: str) -> None:
     try:
-        if os.path.isfile(videoName):
+        if not os.path.isfile(videoName):
             return
-        if os.path.isdir(saveDir):
+        if not os.path.isdir(saveDir):
             os.mkdir(os.path.abspath(saveDir))
         # 读取视频文件
         cap = cv2.VideoCapture(videoName)

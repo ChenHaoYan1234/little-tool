@@ -1,10 +1,8 @@
 import os
-import threading
 
 from PyQt5 import QtCore, QtWidgets
 
-from util import spyder, noNone
-
+from util import spyder, noNone, TaskQueue, Task
 
 class Ui_SpyderDialog(QtWidgets.QDialog):
     def __init__(self, parent: QtWidgets.QMainWindow) -> None:
@@ -75,11 +73,17 @@ class Ui_SpyderDialog(QtWidgets.QDialog):
         if self.Number.text() == "" or int(self.Number.text()) == 0:
             noNone(self, "图片张数")
             return
-        spyder_thread = threading.Thread(target=spyder, args=(
-            self.KeyWord.text(), self.SaveDir.text(), int(self.Number.text())))
-        spyder_thread.start()
-        while spyder_thread.is_alive():
-            spyder_thread.join()
+        task: Task = {
+            "task": spyder,
+            "args": (self.KeyWord.text(), self.SaveDir.text(), int(self.Number.text())),
+            "kwargs": None,
+            "callback": None
+        }
+        TaskQueue.put(task)
+        return
+
+    def callback(self, a0):
+        pass
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
