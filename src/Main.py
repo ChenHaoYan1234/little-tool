@@ -20,6 +20,5 @@ def main() -> typing.NoReturn:
     TaskWorkerProcess.close()
     sys.exit(exit_)
 
-
 if __name__ == "__main__":
     main()

@@ -40,6 +40,7 @@ def worker(taskQueue: Queue):
                 else:
                     task()
         else:
+            taskQueue.close()
             return
 
 

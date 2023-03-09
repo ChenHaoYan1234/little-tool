@@ -49,7 +49,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.setWindowTitle(_translate("MainWindow", "智障小工具"))
+        self.setWindowTitle(_translate("MainWindow", "图像小助手"))
         self.Spyder.setText(_translate("MainWindow", "爬取图片"))
         self.Video.setText(_translate("MainWindow", "视频抽帧"))
-        self.Title.setText(_translate("MainWindow", "智障小工具"))
+        self.Title.setText(_translate("MainWindow", "图像小助手"))
