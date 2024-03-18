@@ -138,5 +138,7 @@ dmypy.json
 cython_debug/
 
 utils/
+.vscode/
+.idea/
 
 *.mp4

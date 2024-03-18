@@ -2,7 +2,7 @@ import sys
 import typing
 import multiprocessing
 
-from PyQt5 import QtWidgets
+from PySide6 import QtWidgets
 from ui import Ui_MainWindow
 from util import TaskWorkerProcess,TaskQueue
 
