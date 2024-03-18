@@ -7,6 +7,7 @@ import requests
 from PIL import Image
 from requests import structures
 
+
 def Find(url, A):
     List = []
     t = 0

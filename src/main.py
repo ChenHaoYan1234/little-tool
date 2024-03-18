@@ -1,10 +1,11 @@
+import multiprocessing
 import sys
 import typing
-import multiprocessing
 
 from PySide6 import QtWidgets
+
 from ui import Ui_MainWindow
-from util import TaskWorkerProcess,TaskQueue
+from util import TaskQueue, TaskWorkerProcess
 
 
 def main() -> typing.NoReturn:
@@ -13,12 +14,12 @@ def main() -> typing.NoReturn:
     app = QtWidgets.QApplication(sys.argv)
     mainWindow = Ui_MainWindow()
     mainWindow.show()
-    exit_ = app.exec_()
+    exit_code= app.exec()
     TaskQueue.put(None)
     while TaskWorkerProcess.is_alive():
         TaskWorkerProcess.join()
     TaskWorkerProcess.close()
-    sys.exit(exit_)
+    sys.exit(exit_code)
 
 if __name__ == "__main__":
     main()

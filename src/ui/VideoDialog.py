@@ -1,12 +1,8 @@
 import os
-import typing
-import time
-import threading
-from util import TaskQueue, Task
 
-from PyQt5 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
-from util import noNone, video
+from util import Task, TaskQueue, noNone, video
 
 
 class Ui_VideoDialog(QtWidgets.QDialog):

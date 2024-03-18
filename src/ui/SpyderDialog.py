@@ -1,8 +1,9 @@
 import os
 
-from PyQt5 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
-from util import spyder, noNone, TaskQueue, Task
+from util import Task, TaskQueue, noNone, spyder
+
 
 class Ui_SpyderDialog(QtWidgets.QDialog):
     def __init__(self, parent: QtWidgets.QMainWindow) -> None:
