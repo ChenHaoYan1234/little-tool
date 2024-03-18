@@ -1,0 +1,1 @@
+pyinstaller -F -w -i ./resource/icon.ico --upx-dir ./utils/upx-4.2.2-win64/ ./src/main.py
