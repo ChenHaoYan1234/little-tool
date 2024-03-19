@@ -11,14 +11,14 @@
 from PySide6.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt
 from PySide6.QtGui import QFont, QIcon, QPixmap
 from PySide6.QtMultimediaWidgets import QVideoWidget
-from PySide6.QtWidgets import (QFrame, QLabel, QMainWindow, QPushButton,
+from PySide6.QtWidgets import (QFrame, QLabel, QDialog, QPushButton,
                                QSizePolicy, QToolButton, QWidget)
 
 
-class Ui_MainWindow(QMainWindow):
+class Ui_MainWindow(QDialog):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
+            MainWindow.setObjectName(u"genshin-impact-lottery")
         MainWindow.resize(1280, 720)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -31,9 +31,7 @@ class Ui_MainWindow(QMainWindow):
         icon = QIcon()
         icon.addFile(u":/images/icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
-        self.centralwidget = QWidget(MainWindow)
-        self.centralwidget.setObjectName(u"centralwidget")
-        self.start = QWidget(self.centralwidget)
+        self.start = QWidget(self)
         self.start.setObjectName(u"start")
         self.start.setGeometry(QRect(0, 0, 1280, 720))
         self.background = QLabel(self.start)
@@ -47,15 +45,15 @@ class Ui_MainWindow(QMainWindow):
         self.ten = QPushButton(self.start)
         self.ten.setObjectName(u"ten")
         self.ten.setGeometry(QRect(760, 430, 181, 61))
-        self.video = QVideoWidget(self.centralwidget)
+        self.video = QVideoWidget(self)
         self.video.setObjectName(u"video")
         self.video.setGeometry(QRect(0, 0, 1280, 720))
-        self.result = QFrame(self.centralwidget)
-        self.result.setObjectName(u"result")
-        self.result.setGeometry(QRect(0, 0, 1280, 720))
-        self.result.setFrameShape(QFrame.Shape.StyledPanel)
-        self.result.setFrameShadow(QFrame.Shadow.Raised)
-        self.name = QLabel(self.result)
+        self.one_result = QFrame(self)
+        self.one_result.setObjectName(u"one_result")
+        self.one_result.setGeometry(QRect(0, 0, 1280, 720))
+        self.one_result.setFrameShape(QFrame.Shape.StyledPanel)
+        self.one_result.setFrameShadow(QFrame.Shadow.Raised)
+        self.name = QLabel(self.one_result)
         self.name.setObjectName(u"name")
         self.name.setGeometry(QRect(520, 270, 321, 141))
         font1 = QFont()
@@ -63,19 +61,18 @@ class Ui_MainWindow(QMainWindow):
         font1.setPointSize(50)
         self.name.setFont(font1)
         self.name.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.image = QLabel(self.result)
+        self.image = QLabel(self.one_result)
         self.image.setObjectName(u"image")
         self.image.setGeometry(QRect(0, 0, 1280, 720))
         self.image.setPixmap(QPixmap(u":/images/one.jpg"))
         self.image.setScaledContents(True)
-        self.closeButton = QToolButton(self.result)
+        self.closeButton = QToolButton(self.one_result)
         self.closeButton.setObjectName(u"closeButton")
         self.closeButton.setGeometry(QRect(1200, 10, 50, 50))
         font2 = QFont()
         font2.setFamilies([u"Sans Serif"])
         font2.setPointSize(20)
         self.closeButton.setFont(font2)
-        MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
@@ -83,9 +80,9 @@ class Ui_MainWindow(QMainWindow):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u539f\u795e\u62bd\u5361", None))
-        self.one.setText(QCoreApplication.translate("MainWindow", u"\u5355\u62bd", None))
-        self.ten.setText(QCoreApplication.translate("MainWindow", u"\u5341\u8fde\u62bd", None))
-        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("genshin-impact-lottery", u"\u539f\u795e\u62bd\u5361", None))
+        self.one.setText(QCoreApplication.translate("genshin-impact-lottery", u"\u5355\u62bd", None))
+        self.ten.setText(QCoreApplication.translate("genshin-impact-lottery", u"\u5341\u8fde\u62bd", None))
+        self.closeButton.setText(QCoreApplication.translate("genshin-impact-lottery", u"X", None))
     # retranslateUi
 

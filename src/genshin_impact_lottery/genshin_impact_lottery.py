@@ -1,12 +1,10 @@
 import random
 
+from . import resource_rc
+from .BaseMainWindow import Ui_MainWindow
 from PySide6 import QtMultimedia
 from PySide6.QtCore import QSize, QUrl
-
-import resource_rc
-from BaseMainWindow import Ui_MainWindow
-from TenWidget import TenWidget
-
+from .TenWidget import TenWidget
 
 class MainWindow(Ui_MainWindow):
     def __init__(self, parent=None):
@@ -23,7 +21,7 @@ class MainWindow(Ui_MainWindow):
         self.ten_result = TenWidget(self)
 
         self.video.setVisible(False)
-        self.result.setVisible(False)
+        self.one_result.setVisible(False)
         self.ten_result.setVisible(False)
 
         self.name.raise_()
@@ -40,11 +38,11 @@ class MainWindow(Ui_MainWindow):
 
     def oneClosed(self):
         self.start.setVisible(True)
-        self.result.setVisible(False)
+        self.one_result.setVisible(False)
 
     def onePlayed(self, status):
         if status == QtMultimedia.QMediaPlayer.MediaStatus.EndOfMedia:
-            self.result.setVisible(True)
+            self.one_result.setVisible(True)
             self.video.setVisible(False)
             self.name.setText(random.choice(self.list))
             try:
