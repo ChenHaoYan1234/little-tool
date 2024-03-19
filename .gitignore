@@ -141,7 +141,7 @@ utils/
 .vscode/
 .idea/
 
-./list.txt
+list.txt
 
 resource_rc.py
 
