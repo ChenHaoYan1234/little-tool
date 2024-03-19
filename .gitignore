@@ -141,4 +141,6 @@ utils/
 .vscode/
 .idea/
 
+resource_rc.py
+
 *.mp4
