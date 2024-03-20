@@ -1,10 +1,12 @@
 import random
 
-from . import resource_rc
-from .BaseMainWindow import Ui_MainWindow
 from PySide6 import QtMultimedia
 from PySide6.QtCore import QSize, QUrl
+
+from . import resource_rc
+from .BaseMainWindow import Ui_MainWindow
 from .TenWidget import TenWidget
+
 
 class MainWindow(Ui_MainWindow):
     def __init__(self, parent=None):

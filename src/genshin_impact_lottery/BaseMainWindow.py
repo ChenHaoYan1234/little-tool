@@ -11,7 +11,7 @@
 from PySide6.QtCore import QCoreApplication, QMetaObject, QRect, QSize, Qt
 from PySide6.QtGui import QFont, QIcon, QPixmap
 from PySide6.QtMultimediaWidgets import QVideoWidget
-from PySide6.QtWidgets import (QFrame, QLabel, QDialog, QPushButton,
+from PySide6.QtWidgets import (QDialog, QFrame, QLabel, QPushButton,
                                QSizePolicy, QToolButton, QWidget)
 
 

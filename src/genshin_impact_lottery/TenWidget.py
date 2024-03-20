@@ -1,5 +1,6 @@
 from .BaseTenWidget import Ui_TenWidget
 
+
 class TenWidget(Ui_TenWidget):
     def __init__(self, parent):
         self._parent = parent

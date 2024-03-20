@@ -1,9 +1,9 @@
 from PySide6 import QtCore, QtGui, QtWidgets
 
+from genshin_impact_lottery.genshin_impact_lottery import MainWindow
+
 from .SpyderDialog import Ui_SpyderDialog
 from .VideoDialog import Ui_VideoDialog
-
-from genshin_impact_lottery.genshin_impact_lottery import MainWindow
 
 
 class Ui_MainWindow(QtWidgets.QMainWindow):

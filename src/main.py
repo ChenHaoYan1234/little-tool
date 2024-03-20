@@ -5,6 +5,7 @@ from PySide6 import QtWidgets
 
 from ui import Ui_MainWindow
 
+
 def main() -> typing.NoReturn:
     app = QtWidgets.QApplication(sys.argv)
     mainWindow = Ui_MainWindow()
