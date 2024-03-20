@@ -2,7 +2,7 @@ import os
 
 from PySide6 import QtCore, QtWidgets
 
-from util import Task, TaskQueue, noNone, spyder
+from util import noNone, spyder
 
 
 class Ui_SpyderDialog(QtWidgets.QDialog):
@@ -74,13 +74,7 @@ class Ui_SpyderDialog(QtWidgets.QDialog):
         if self.Number.text() == "" or int(self.Number.text()) == 0:
             noNone(self, "图片张数")
             return
-        task: Task = {
-            "task": spyder,
-            "args": (self.KeyWord.text(), self.SaveDir.text(), int(self.Number.text())),
-            "kwargs": None,
-            "callback": None
-        }
-        TaskQueue.put(task)
+        spyder(self.KeyWord.text(), self.SaveDir.text(), int(self.Number.text()))
         return
 
     def callback(self, a0):

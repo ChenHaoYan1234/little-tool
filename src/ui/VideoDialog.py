@@ -2,7 +2,7 @@ import os
 
 from PySide6 import QtCore, QtWidgets
 
-from util import Task, TaskQueue, noNone, video
+from util import noNone, video
 
 
 class Ui_VideoDialog(QtWidgets.QDialog):
@@ -57,13 +57,7 @@ class Ui_VideoDialog(QtWidgets.QDialog):
         if self.SaveDir.text() == "":
             noNone(self, "保存目录")
             return
-        task: Task = {
-            "task": video,
-            "args": (self.Video.text(),self.SaveDir.text()),
-            "kwargs": None,
-            "callback": None
-        }
-        TaskQueue.put(task)
+        video(self.Video.text(), self.SaveDir.text())
         return
 
     def closeWarper(self):
