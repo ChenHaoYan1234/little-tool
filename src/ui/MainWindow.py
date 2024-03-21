@@ -1,3 +1,5 @@
+import os
+
 from PySide6 import QtCore, QtGui, QtWidgets
 
 from genshin_impact_lottery.genshin_impact_lottery import MainWindow
@@ -41,6 +43,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.init()
 
     def init(self):
+
+        if not os.path.isfile("./list.txt"):
+            self.genshin_impact_lottery.setEnabled(False)
+
         self.Spyder.clicked.connect(self.spyderWarper)
         self.Video.clicked.connect(self.videoWarper)
         self.genshin_impact_lottery.clicked.connect(self.genshin_impact_lottery_warper)
