@@ -12,7 +12,12 @@ class TenWidget(Ui_TenWidget):
 
     def setName(self, names: list[str]):
         for i, name in enumerate(names):
-            getattr(self, f"name_{i + 1}").setText(name)
+            tmp = ""
+            for c in name:
+                tmp += c
+                tmp += '\n'
+            tmp = tmp[:-1]
+            getattr(self, f"name_{i + 1}").setText(tmp)
 
     def tenClose(self):
         self._parent.start.setVisible(True)
