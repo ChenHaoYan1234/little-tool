@@ -80,7 +80,7 @@ class Ui_MainWindow(QDialog):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("genshin-impact-lottery", u"\u539f\u795e\u62bd\u5361", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("genshin-impact-lottery", u"随机抽取", None))
         self.one.setText(QCoreApplication.translate("genshin-impact-lottery", u"\u5355\u62bd", None))
         self.ten.setText(QCoreApplication.translate("genshin-impact-lottery", u"\u5341\u8fde\u62bd", None))
         self.closeButton.setText(QCoreApplication.translate("genshin-impact-lottery", u"X", None))

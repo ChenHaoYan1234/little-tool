@@ -1,0 +1,8 @@
+<RCC>
+  <qresource>
+    <file>main_menu.png</file>
+    <file>spyder.png</file>
+    <file>video.png</file>
+    <file>lottery.png</file>
+  </qresource>
+</RCC>
